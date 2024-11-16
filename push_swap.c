@@ -6,7 +6,7 @@
 /*   By: sasano <shunkotkg0141@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 18:48:41 by sasano            #+#    #+#             */
-/*   Updated: 2024/09/17 23:57:45 by sasano           ###   ########.fr       */
+/*   Updated: 2024/11/17 02:13:19 by sasano           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static t_stack	*create_stack(int argc, int *coords)
 			stack->top->prev = node;
 		stack->top = node;
 	}
-	while(node->next)
+	while (node->next)
 		node = node->next;
 	node->next = stack->top;
 	stack->top->prev = node;
@@ -72,6 +72,8 @@ int	main(int argc, char *argv[])
 	check_input(&argc, &argv);
 	//座標圧縮
 	coords = coordinateCompression(argc, argv);
+	// 重複がないかチェック
+	check_duplicate(argc - 1, coords);
 	//スタック作成
 	a = create_stack(argc, coords);
 	b = (t_stack *)malloc(sizeof(t_stack) * 1);
@@ -93,6 +95,7 @@ int	main(int argc, char *argv[])
 	// スタックBからスタックAにソートしながら戻す
 	return_stack_to_a_from_b(a, b);
 	rotate_sort_a(a);
+	// print_stack(a, b);
 	return (0);
 }
 

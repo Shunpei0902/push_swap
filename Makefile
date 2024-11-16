@@ -2,7 +2,8 @@ NAME = push_swap
 SORC = ./push_swap.c ./push_swap_utils.c ./coordinateCompression.c ./free.c ./sort_action.c ./sort_action_util.c ./debug.c ./search_insert_min_node.c ./check_input.c
 OBJS = $(SORC:.c=.o)
 CC = cc
-CFLAGS = -Wall -Wextra -Werror  -g3 -fsanitize=address -fno-omit-frame-pointer
+# CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address -fno-omit-frame-pointer
+CFLAGS = -Wall -Wextra -Werror
 LDFLAGS = -L./libft -lft
 
 all: lib printf $(NAME)

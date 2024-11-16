@@ -6,7 +6,7 @@
 /*   By: sasano <shunkotkg0141@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 00:14:36 by sasano            #+#    #+#             */
-/*   Updated: 2024/09/18 00:15:52 by sasano           ###   ########.fr       */
+/*   Updated: 2024/11/17 02:17:57 by sasano           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 # define PUSH_SWAP_H
 
 // # define MAX 100
-# define sb sa
+# define sb	sa
 
 # include "ft_printf/ft_printf.h"
 # include "libft/libft.h"
 # include <stdio.h>
 # include <stdlib.h>
+# include <limits.h>
+# include <ctype.h>
+
 
 typedef struct s_node
 {
@@ -54,6 +57,7 @@ void				rrb(t_stack *b, int flag);
 void				rrr(t_stack *a, t_stack *b, int flag);
 void 				check_input(int *argc, char **argv[]);
 int					*coordinateCompression(int argc, char *argv[]);
+int check_duplicate(int array_size, int *array);
 size_t				stack_size(t_stack *stack);
 int 				sort_two_element(t_stack *a);
 int 				sort_three_element(t_stack *a);
