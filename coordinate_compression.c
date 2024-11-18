@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   coordinateCompression.c                            :+:      :+:    :+:   */
+/*   coordinate_compression.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sasano <shunkotkg0141@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 18:54:42 by sasano            #+#    #+#             */
-/*   Updated: 2023/12/27 05:03:17 by sasano           ###   ########.fr       */
+/*   Updated: 2024/11/17 04:47:22 by sasano           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,16 +70,15 @@ static void	error_coords(int *coords, int *sorted_coords,
 		free(sorted_coords);
 	if (compressed_coords)
 		free(compressed_coords);
-	ft_putstr_fd("Error\n", 2);
-	exit(1);
+	error();
 }
 
-int	*coordinateCompression(int argc, char *argv[])
+int	*coordinate_compression(int argc, char *argv[])
 {
-	int i;
-	int *coords;
-	int *sorted_coords;
-	int *compressed_coords;
+	int	i;
+	int	*coords;
+	int	*sorted_coords;
+	int	*compressed_coords;
 
 	coords = (int *)malloc(sizeof(int) * (argc - 1));
 	sorted_coords = (int *)malloc(sizeof(int) * (argc - 1));

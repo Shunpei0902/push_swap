@@ -6,7 +6,7 @@
 /*   By: sasano <shunkotkg0141@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 11:24:32 by sasano            #+#    #+#             */
-/*   Updated: 2024/09/18 00:14:13 by sasano           ###   ########.fr       */
+/*   Updated: 2024/11/18 14:36:40 by sasano           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,17 @@
 
 void	sa(t_stack *a, int flag)
 {
-	t_node *new_top;
-	t_node *new_next;
-	t_node *new_prev;
-	t_node *new_next_next;
+	t_node	*new_top;
+	t_node	*new_next;
+	t_node	*new_prev;
+	t_node	*new_next_next;
 
 	if (!a || !a->top || !a->top->next)
 		return ;
-	new_next  = a->top;
+	new_next = a->top;
 	new_top = a->top->next;
 	new_prev = a->top->prev;
 	new_next_next = a->top->next->next;
-
 	new_top->next = new_next;
 	new_top->prev = new_prev;
 	new_next->prev = new_top;
@@ -37,6 +36,13 @@ void	sa(t_stack *a, int flag)
 		ft_putstr_fd("sa\n", 1);
 }
 
+void	sb(t_stack *b, int flag)
+{
+	sa(b, 0);
+	if (flag)
+		ft_putstr_fd("sb\n", 1);
+}
+
 void	ss(t_stack *a, t_stack *b, int flag)
 {
 	sa(a, 0);
@@ -44,7 +50,6 @@ void	ss(t_stack *a, t_stack *b, int flag)
 	if (flag)
 		ft_putstr_fd("ss\n", 1);
 }
-
 
 void	pa(t_stack *a, t_stack *b)
 {
@@ -55,7 +60,7 @@ void	pa(t_stack *a, t_stack *b)
 	tmp = b->top;
 	if (stack_size(b) == 1)
 		b->top = NULL;
-	else 
+	else
 	{
 		b->top = b->top->next;
 		b->top->prev = tmp->prev;
@@ -69,56 +74,30 @@ void	pa(t_stack *a, t_stack *b)
 	ft_putstr_fd("pa\n", 1);
 }
 
-void pb(t_stack *a, t_stack *b)
+void	pb(t_stack *a, t_stack *b)
 {
-    t_node *tmp;
-	
-    if (a && a->top)
-    {
-        tmp = a->top;
-        a->top = a->top->next;
-        a->top->prev = tmp->prev;
-        a->top->prev->next = a->top;
-        if (!b->top)
-        {
-            b->top = tmp;
-            tmp->next = tmp;
-            tmp->prev = tmp;
-        }
-        else
-        {
-            tmp->next = b->top;
-            tmp->prev = b->top->prev;
-            b->top->prev->next = tmp;
-            b->top->prev = tmp;
-            b->top = tmp;
-        }
-    }
-    ft_putstr_fd("pb\n", 1);
-}
+	t_node	*tmp;
 
-void	ra(t_stack *a, int flag)
-{
-	if (!a || !a->top)
-		return ;
-	a->top = a->top->next;
-	if (flag)
-		ft_putstr_fd("ra\n", 1);
-}
-
-void	rb(t_stack *b, int flag)
-{
-	if (!b || !b->top)
-		return ;
-	b->top = b->top->next;
-	if (flag)
-		ft_putstr_fd("rb\n", 1);
-}
-
-void	rr(t_stack *a, t_stack *b, int flag)
-{
-	ra(a, 0);
-	rb(b, 0);
-	if (flag)
-		ft_putstr_fd("rr\n", 1);
+	if (a && a->top)
+	{
+		tmp = a->top;
+		a->top = a->top->next;
+		a->top->prev = tmp->prev;
+		a->top->prev->next = a->top;
+		if (!b->top)
+		{
+			b->top = tmp;
+			tmp->next = tmp;
+			tmp->prev = tmp;
+		}
+		else
+		{
+			tmp->next = b->top;
+			tmp->prev = b->top->prev;
+			b->top->prev->next = tmp;
+			b->top->prev = tmp;
+			b->top = tmp;
+		}
+	}
+	ft_putstr_fd("pb\n", 1);
 }

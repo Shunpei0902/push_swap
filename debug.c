@@ -6,7 +6,7 @@
 /*   By: sasano <shunkotkg0141@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 01:03:00 by sasano            #+#    #+#             */
-/*   Updated: 2024/09/17 23:58:24 by sasano           ###   ########.fr       */
+/*   Updated: 2024/11/17 05:05:38 by sasano           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,46 +16,43 @@ void	print_stack(t_stack *a, t_stack *b)
 {
 	t_node	*node;
 
-	printf("a: ");
+	ft_printf("a: ");
 	if (!a || !a->top)
-		printf("NULL\n");
+		ft_printf("NULL\n");
 	else
 	{
 		node = a->top;
 		while (1)
 		{
-			printf("%d ", node->value);
+			ft_printf("%d ", node->value);
 			node = node->next;
 			if (node == a->top)
-				break;
+				break ;
 		}
-		printf("\n");
+		ft_printf("\n");
 	}
-	printf("b: ");
+	ft_printf("b: ");
 	if (!b || !b->top)
-		printf("NULL\n");
+		ft_printf("NULL\n");
 	else
 	{
 		node = b->top;
 		while (1)
 		{
-			printf("%d ", node->value);
+			ft_printf("%d ", node->value);
 			node = node->next;
 			if (node == b->top)
-				break;
+				break ;
 		}
-		printf("\n");
+		ft_printf("\n");
 	}
 }
 
-void print_argv(int i, char **str)
+void	print_argv(int i, char **str)
 {
-	// int i;
-
-	// i = 0;
-	while(i--)
+	while (i--)
 	{
-		printf("<%s> ", *(str++));
+		ft_printf("<%s> ", *(str++));
 	}
-	printf("\n");
+	ft_printf("\n");
 }

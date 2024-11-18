@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sasano <sasano.stu>                        +#+  +:+       +#+        */
+/*   By: sasano <shunkotkg0141@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 12:31:23 by sasano            #+#    #+#             */
-/*   Updated: 2023/11/17 18:44:22 by sasano           ###   ########.fr       */
+/*   Updated: 2024/11/18 14:10:39 by sasano           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,8 @@ int	ft_printf(const char *format, ...)
 	va_list	args;
 	int		count;
 
-	// int		i;
 	count = 0;
 	va_start(args, format);
-	// i = 0;
 	while (*format)
 	{
 		if (*format == '%')
