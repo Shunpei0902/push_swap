@@ -19,6 +19,7 @@
 # include <limits.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <stdint.h>
 
 typedef struct s_node
 {
@@ -55,7 +56,7 @@ void				rrr(t_stack *a, t_stack *b, int flag);
 void				check_input(int *argc, char **argv[]);
 int					*coordinate_compression(int argc, char *argv[]);
 int					check_duplicate(int array_size, int *array);
-void				is_outside_int_range(const char *str);
+int					is_outside_int_range(const char *str);
 size_t				stack_size(t_stack *stack);
 int					sort_two_element(t_stack *a);
 int					sort_three_element(t_stack *a);
@@ -78,8 +79,9 @@ void				return_stack_to_a_from_b(t_stack *a, t_stack *b);
 void				rotate_sort_a(t_stack *a);
 void				free_stack(t_stack *stack);
 void				free_search_result(t_search_result *result);
+// void				free_str_array(int len, char **str);
+void				free_str_array(char **str);
 void				error(void);
-void				print_stack(t_stack *a, t_stack *b);
-void				print_argv(int i, char **str);
+void print_str_array(char **str);
 
 #endif

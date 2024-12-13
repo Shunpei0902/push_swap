@@ -24,8 +24,8 @@ static t_search_result	*search_insert_min_count(t_stack *a, t_stack *b,
 	else
 		search_insert_position_count(a, result->target_a_node,
 			result->a_head_count, -1);
-	result->inserted_b_node = search_on_inserted_b_node(result->target_a_node->value,
-			b);
+	result->inserted_b_node = search_on_inserted_b_node(
+			result->target_a_node->value, b);
 	count = check_rest_count(result, min_result);
 	if (count)
 		search_insert_position_count(b, result->inserted_b_node,
@@ -73,8 +73,8 @@ static t_search_result	*search_from_below(t_stack *a, t_stack *b, t_node *node,
 	return (min_result);
 }
 
-static t_search_result	*search_from_above(t_stack *a, t_stack *b, t_node *node,
-		t_search_result *min_result)
+static t_search_result	*search_from_above(t_stack *a, t_stack *b,
+	t_node *node, t_search_result *min_result)
 {
 	t_search_result	*result;
 	int				count;

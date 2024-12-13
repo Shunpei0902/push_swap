@@ -83,7 +83,12 @@ int	main(int argc, char *argv[])
 
 	check_input(&argc, &argv);
 	coords = coordinate_compression(argc, argv);
-	check_duplicate(argc - 1, coords);
+	free_str_array(argv);
+	if (check_duplicate(argc - 1, coords))
+	{
+		free(coords);
+		error();
+	}
 	a = create_stack(argc, coords);
 	b = (t_stack *)malloc(sizeof(t_stack) * 1);
 	if (!b)

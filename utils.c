@@ -60,6 +60,7 @@ void	move_stack(t_stack *a, t_stack *b, t_search_result *result)
 	while (result->b_head_count[1]-- > 0)
 		rrb(b, 1);
 	pb(a, b);
+	free_search_result(result);
 }
 
 void	fill_minus(t_search_result *result, int index)

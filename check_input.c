@@ -26,7 +26,11 @@ char	**ft_array_concat(char **array1, char **array2)
 		;
 	new_array = (char **)malloc(sizeof(char *) * (i + j + 1));
 	if (!new_array)
+	{
+		free_str_array(array1);
+		free_str_array(array2);
 		exit(1);
+	}
 	i = -1;
 	while (array1 && array1[++i])
 		new_array[i] = array1[i];
@@ -40,24 +44,32 @@ char	**ft_array_concat(char **array1, char **array2)
 int	format_split(char ***formated_input, char *str)
 {
 	char	**split;
+	char 	**tmp;
 	int		count;
 	int		i;
 	int		j;
 
 	count = 0;
+	tmp = *formated_input;
 	split = ft_split(str, ' ');
 	i = -1;
 	while (split[++i])
 	{
 		j = -1;
 		while (split[i][++j])
-		{
+		
 			if (!ft_isdigit(split[i][j]) && split[i][j] != '-')
+			{
+				free_str_array(split);
+				free_str_array(tmp);
 				error();
-		}
+			}
+		
 		count++;
 	}
 	*formated_input = ft_array_concat(*formated_input, split);
+	free(tmp);
+	free(split);
 	return (count);
 }
 
@@ -91,6 +103,16 @@ void	check_input(int *argc, char **argv[])
 		error();
 	i = *argc;
 	while (--i)
-		is_outside_int_range((*argv)[i]);
+	{
+		if (is_outside_int_range((*argv)[i]))
+		{
+			(*argc)--;
+			while (--(*argc))
+				free(*argv[*argc]);
+			free_str_array(*argv);
+			error();
+		}
+
+	}
 	return ;
 }

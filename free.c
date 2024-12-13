@@ -12,31 +12,6 @@
 
 #include "push_swap.h"
 
-// void	free_stack(t_stack *stack)
-// {
-// 	t_node	*node;
-// 	t_node	*tmp;
-// 	int		size;
-// 	int		i;
-
-// 	if (!stack)
-// 		return ;
-// 	size = stack_size(stack);
-// 	i = 0;
-// 	node = stack->top;
-// 	printf("stack freed\n");
-// 	while (i++ < size)
-// 	{
-// 		if (i < size - 1)
-// 			tmp = node->next;
-// 		free(node);
-// 		if (i < size - 1)
-// 			node = tmp;
-// 	}
-// 	printf("stack freed\n");
-// 	free(stack);
-// }
-
 void	free_stack(t_stack *stack)
 {
 	t_node	*node;
@@ -66,4 +41,31 @@ void	free_search_result(t_search_result *result)
 	free(result->a_head_count);
 	free(result->b_head_count);
 	free(result);
+}
+
+void	free_str_array(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
+}
+
+void print_str_array(char **str)
+{
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		ft_printf("str[%d]: %s : %p\n", i, str[i], &(str[i]));
+		i++;
+	}
+	ft_printf("str[%d]: %s : %p\n", i, str[i], &(str[i]));
+	ft_printf("str: %p\n", &str);
 }

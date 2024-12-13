@@ -29,6 +29,7 @@ t_search_result	*eval_min_count(int *count_array, t_search_result *result,
 	}
 	else
 		free_search_result(result);
+	free(count_array);
 	return (min_result);
 }
 
@@ -74,8 +75,8 @@ t_node	*search_on_inserted_b_node(int value, t_stack *b)
 void	search_insert_position_count(t_stack *stack, t_node *target, int *count,
 		int min_count)
 {
-	int flag;
-	t_node *tmp;
+	int		flag;
+	t_node	*tmp;
 
 	flag = 0;
 	tmp = target;

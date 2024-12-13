@@ -24,13 +24,14 @@ int	check_duplicate(int array_size, int *array)
 		while (++j < array_size)
 		{
 			if (array[i] == array[j])
-				error();
+				// error();
+				return (1);
 		}
 	}
 	return (0);
 }
 
-void	is_outside_int_range(const char *str)
+int	is_outside_int_range(const char *str)
 {
 	char	sign;
 	int		digit;
@@ -41,16 +42,18 @@ void	is_outside_int_range(const char *str)
 	sign = '+';
 	if (*str == '-' || *str == '+')
 		sign = *str++;
-	if (!ft_isdigit(*str))
-		error();
+	// if (!ft_isdigit(*str))
+	// 	error();
 	value = 0;
 	while (*str)
 	{
 		digit = *str - '0';
 		if ((sign == '+' && (value > (INT_MAX - digit) / 10)) || (sign == '-'
 				&& value > (-(long)INT_MIN - digit) / 10))
-			error();
+			// error()
+			return (1);
 		value = value * 10 + digit;
 		str++;
 	}
+	return (0);
 }
